@@ -2,7 +2,8 @@
 # python version：2.7
 # author:sharpdeep
 
-#注意：使用之前必须pip install lxml itchat bs4 pytz APScheduler
+#注意1：使用之前必须pip install lxml itchat bs4 pytz APScheduler
+#注意2：在命令行界面扫码登录的时候，最好使用黑背景白色字体，否则可能扫不了不识别
 import urllib
 import urllib2
 import logging
@@ -83,8 +84,8 @@ def scheduledTask(myJob):
 
 
 def myJob():
-    strList = "\n".join(baiduSearchCrawler("淘宝网"))
-    sendItchatMsg("Mary".decode("utf-8"), strList.decode("utf-8"))
+    strList = "\n".join(baiduSearchCrawler("团贷网"))
+    sendItchatMsg("妈妈".decode("utf-8"), strList.decode("utf-8"))
 
 
 if __name__ == '__main__':
