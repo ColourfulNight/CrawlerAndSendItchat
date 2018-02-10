@@ -1,6 +1,6 @@
 # coding=utf-8
 # python version：2.7
-# author:sharpdeep
+# author:Edgar
 
 #注意1：使用之前必须pip install lxml itchat bs4 pytz APScheduler
 #注意2：在命令行界面扫码登录的时候，最好使用黑背景白色字体，否则可能扫不了不识别
