@@ -84,8 +84,8 @@ def scheduledTask(myJob):
 
 
 def myJob():
-    strList = "\n".join(baiduSearchCrawler("团贷网"))
-    sendItchatMsg("妈妈".decode("utf-8"), strList.decode("utf-8"))
+    strList = "\n".join(baiduSearchCrawler("淘宝网"))
+    sendItchatMsg("Mary".decode("utf-8"), strList.decode("utf-8"))
 
 
 if __name__ == '__main__':
