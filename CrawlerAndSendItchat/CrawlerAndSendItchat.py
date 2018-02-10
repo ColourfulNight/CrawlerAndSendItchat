@@ -2,20 +2,20 @@
 # python version：2.7
 # author:sharpdeep
 
+#注意：使用之前必须pip install lxml itchat bs4 pytz APScheduler
 import urllib
 import urllib2
+import logging
 
 import itchat
 from apscheduler.schedulers.blocking import BlockingScheduler
 from bs4 import BeautifulSoup as BS
 from pytz import utc
 
-
 # 利用微信接口给好友发送消息
 # uname：好友的备注名
 # message：要发送的消息内容(必须是字符串)
 def sendItchatMsg(uname, message):
-    #enableCmdQR=True是命令行界面如Linux下显示二维码使用，图形环境请置为False，切记！
     itchat.auto_login(enableCmdQR=True, hotReload=True)
     # 想给谁发信息，先查找到这个朋友,name后填微信备注即可,deepin测试成功
     users = itchat.search_friends(name=uname)
@@ -23,6 +23,7 @@ def sendItchatMsg(uname, message):
     # 获取`UserName`,用于发送消息
     userName = users[0]['UserName']
     itchat.send(message, toUserName=userName)
+    # print("Success")
 
 
 # 功能：爬取百度搜索结果页面(正文标题、发布时间和内容快照)
@@ -76,8 +77,8 @@ def baiduSearchCrawler(keyword):
 def scheduledTask(myJob):
     # myJob()
     sched = BlockingScheduler(timezone=utc)
-    # sched.daemonic = True 默认配置
-    sched.add_job(myJob, 'interval', days=02, hours=9, minutes=30, seconds=0)
+    #sched.daemonic = True
+    sched.add_job(myJob, 'interval', days=2, hours=9, minutes=30, seconds=0)
     sched.start()
 
 
@@ -87,4 +88,6 @@ def myJob():
 
 
 if __name__ == '__main__':
+    logging.basicConfig()
+    daemon = True
     scheduledTask(myJob)
